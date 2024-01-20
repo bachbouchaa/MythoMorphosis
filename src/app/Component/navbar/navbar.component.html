@@ -1,0 +1,48 @@
+<!-- navbar.component.html -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+      <!-- Left Container -->
+      <div class="left-container">
+        <a class="navbar-brand" href="#">
+          <img src="path/to/your/logo.png" alt="Logo" width="40" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/team">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/contact">Contact us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Right Container -->
+      <div class="right-container">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="btn btn-danger" *ngIf="!isLoggedIn" routerLink="/login">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-danger" *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
+  

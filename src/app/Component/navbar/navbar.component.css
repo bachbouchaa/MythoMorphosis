@@ -1,0 +1,66 @@
+nav {
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  /* navbar.component.css */
+
+/* Styling for the login and logout buttons */
+.navbar-nav .btn-danger {
+    background-color: #333;  
+    border-color: #524444; /* Red border color */
+    color: #fff; /* White text color */
+  }
+  
+  .navbar-nav .btn-danger:hover {
+    border-color: #ac2925; /* Darker red border on hover */
+    background-color: #b71c1c; /* Lighter red on hover */
+
+  }
+  .navbar {
+    padding: 10px 0; /* Optional: Adjust the padding according to your design preference */
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-toggler {
+    order: -1; /* Move the toggler to the left */
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .right-container {
+    display: flex;
+    align-items: center;
+  }
