@@ -11,13 +11,11 @@ import { UserLoginDto } from '../Model/user-login-dto.model';
 })
 export class AuthService {
   private apiUrl = 'your_backend_api_url'; 
-
   private isAuthenticated = new BehaviorSubject<boolean>(false);
 
   get isAuthenticated$() {
     return this.isAuthenticated.asObservable();
   }
-
   constructor(private http: HttpClient) {}
 
   login(userLoginDto: UserLoginDto): Observable<any> {
@@ -29,8 +27,8 @@ export class AuthService {
   }
 
   register(userDTO: UserDTO): void {
-    // Simulate a registration request to a server (replace with your actual server endpoint)
-    this.http.post<any>('https://your-server.com/register', userDTO)
+    // Simulate a registration request to a server 
+    this.http.post<any>(this.apiUrl, userDTO)
       .subscribe(
         (response) => {
           // Registration successful

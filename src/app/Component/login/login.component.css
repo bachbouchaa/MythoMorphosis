@@ -8,7 +8,7 @@ h2 {
         border: 1px solid #333; /* Dark grey border */
         border-radius: 10px;
         margin-top: 50px;
-        background-color: #333; /* Dark grey background */
+        background-color: #343a40        ; /* Dark grey background */
         color: #fff; /* White text */
       }
       
@@ -28,7 +28,7 @@ h2 {
         padding: 8px;
         border-radius: 5px;
         border: 1px solid #555; /* Medium grey border */
-        background-color: #444; /* Dark grey background */
+        background-color: #fffbfb; /* Dark grey background */
         color: #ddd; /* Light grey text */
       }
       
@@ -61,4 +61,3 @@ h2 {
       .forgot-password-link:hover {
         color: #e0e0e0;
       }
-      

@@ -8,9 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Component/login/login.component';
 import { NavbarComponent } from './Component/navbar/navbar.component';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { SidebarComponent } from './Component/sidebar/sidebar.component';
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, NavbarComponent],
+    AppComponent, RegisterComponent, LoginComponent, NavbarComponent, SidebarComponent],
   imports: [
     BrowserModule,
     FormsModule,
