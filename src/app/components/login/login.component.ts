@@ -2,7 +2,7 @@
 
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserLoginDto } from 'src/app/Model/user-login-dto.model';
+import { UserLoginDto } from 'src/app/models/user-login-dto.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -28,5 +28,13 @@ export class LoginComponent {
       }
     );
   }
-}
 
+  type: string="password";
+  isText: boolean=false;
+  eyeIcon: string="fa-eye-slash"
+  hideShowPass(){
+    this.isText = !this.isText;
+    this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = "fa-eye-slash";
+    this.isText ? this.type = "text" : this.type = "password";
+}
+}

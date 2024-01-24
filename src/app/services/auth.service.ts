@@ -3,8 +3,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { UserDTO } from '../Model/user/user-dto.model';
-import { UserLoginDto } from '../Model/user-login-dto.model';
+import { UserLoginDto } from '../models/user-login-dto.model';
+import { UserDTO } from '../models/user/user-dto.model';
+
 
 @Injectable({
   providedIn: 'root',

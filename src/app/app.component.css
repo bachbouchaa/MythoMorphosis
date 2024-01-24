@@ -1,0 +1,7 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Light');
+
+body, html {
+    font-family: 'Open Sans Light', sans-serif;
+  }

@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { UserDTO } from 'src/app/Model/user/user-dto.model';
+import { UserDTO } from 'src/app/models/user/user-dto.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
