@@ -1,0 +1,11 @@
+<div *ngFor="let session of weeklySessions">
+    <h2>{{ session.name }}</h2>
+    <ul>
+      <li *ngFor="let workout of session.getWorkouts()">
+        <span>{{ workout.name }}</span>
+        <button (click)="markWorkoutDone(session.getId(), workout.getId())">Mark as Done</button>
+      </li>
+    </ul>
+    <button (click)="markSessionDone(session.getId())">Mark Session as Done</button>
+  </div>
+  

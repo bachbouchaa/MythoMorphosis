@@ -1,8 +1,10 @@
 // login.component.ts
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserLoginDto } from 'src/app/models/user-login-dto.model';
+import FormValidator from 'src/app/helpers/validateform';
+import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,31 +12,42 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  userLoginDto: UserLoginDto = new UserLoginDto('', ''); // Model for the login form
+export class LoginComponent implements OnInit{
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
 
-  login() {
-    this.authService.login(this.userLoginDto).subscribe(
-      (response) => {
-        console.log('Login successful', response);
-        // Redirect to a protected page, e.g., dashboard
-        this.router.navigate(['/dashboard']);
-      },
-      (error) => {
-        console.error('Login failed', error);
-        alert('Invalid credentials. Please try again.');
-      }
-    );
-  }
-
+  // initialisation et déclarations des variables du fa-eye et du m2p par défaut 
   type: string="password";
   isText: boolean=false;
-  eyeIcon: string="fa-eye-slash"
+  eyeIcon: string="fa-eye-slash";
+  loginForm! : FormGroup;
+
+  ngOnInit(){
+    this.loginForm=this.fb.group({
+      username:['', Validators.required],
+      password:['', Validators.required]
+    })
+  }
+
   hideShowPass(){
     this.isText = !this.isText;
     this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = "fa-eye-slash";
     this.isText ? this.type = "text" : this.type = "password";
+}
+onSubmit() {
+  if (this.loginForm.valid) {
+    this.auth.signIn(this.loginForm.value).subscribe(
+      {
+        next:(res)=>{
+          alert(res.message);
+        }, 
+        error:(err)=> {
+          alert(err?.error.message);     
+        }
+      }
+    )  
+  } else {
+    FormValidator.markFormGroupTouched(this.loginForm);
+  }
 }
 }

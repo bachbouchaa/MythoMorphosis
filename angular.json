@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "MythoMorphosis:build:production"
+              "buildTarget": "MythoMorphosis:build:production"
             },
             "development": {
-              "browserTarget": "MythoMorphosis:build:development"
+              "buildTarget": "MythoMorphosis:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MythoMorphosis:build"
+            "buildTarget": "MythoMorphosis:build"
           }
         },
         "test": {
