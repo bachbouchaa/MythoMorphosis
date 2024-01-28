@@ -10,10 +10,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CommonModule } from '@angular/common'; 
+import { WorkoutComponent } from './components/workout/workout.component';
+import { SessionComponent } from './components/session/session.component';
+import { CurrentWeekComponent } from './components/current-week/current-week.component';
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, NavbarComponent, SidebarComponent, SignupComponent],
+    AppComponent, LoginComponent, NavbarComponent, SidebarComponent, SignupComponent, WorkoutComponent, SessionComponent, CurrentWeekComponent],
   imports: [
     BrowserModule,
     FormsModule,

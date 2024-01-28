@@ -3,7 +3,7 @@ import { Workout } from "./workout";
 // session.model.ts
 export class Session {
   private id!: number;
-  name: string;
+  private name: string;
   private done: boolean = false;
   workouts: Workout[];
     constructor(name: string,workouts: Workout[]) {
@@ -14,13 +14,19 @@ export class Session {
       return this.done;
   }
 
-  setDone() {
-      this.done = true;
+  setDone(value: boolean): void {
+    this.done = value;
   }
   getId(): number{
     return this.id;
   }  
   getWorkouts(): Workout[] {
     return this.workouts;
+  }
+  getName(): string {
+    return this.name;
+  }
+  setName(value: string): void {
+    this.name = value;
   }
 }

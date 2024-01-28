@@ -1,7 +1,7 @@
 // workout.model.ts
 export class Workout {
   private id!: number;
-  name: string;
+  private name: string;
   private done: boolean = false;
 
   constructor(name: string) {
@@ -11,9 +11,14 @@ export class Workout {
   getDone(): boolean {
       return this.done;
   }
-
-  setDone() {
-      this.done = true;
+  getName(): string {
+    return this.name;
+  }
+  setName(value: string): void {
+    this.name = value;
+  }
+  setDone(value: boolean): void {
+    this.done = value;
   }
   getId(): number{
     return this.id;

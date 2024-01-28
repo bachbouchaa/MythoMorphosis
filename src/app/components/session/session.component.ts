@@ -1,27 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Workout } from 'src/app/models/workouts/workout';
-import { CurrentWeekService } from 'src/app/services/current-week.service';
+import { Session } from 'src/app/models/workouts/session';
+import { GymService } from 'src/app/services/gym.service';
 
 @Component({
   selector: 'app-session',
-  standalone: true,
-  imports: [],
   templateUrl: './session.component.html',
   styleUrl: './session.component.css'
 })
-export class SessionComponent {
-  private exercices!: Observable<Workout[]>;
-  private exercises_test = [
-    'Exercise1',
-    'Exercise2',
-    'Exercise3'
-  ];
-  
-  constructor(private currentWeekService: CurrentWeekService){}
-  getCurrentWeek() {
-    return 'test';
+export class SessionComponent  {
+  @Input() currentWeek!: Session[];
+
+  constructor(private gymService: GymService) {}
+
+  markSessionAsDone(sessionId: number) {
+      this.gymService.markSessionDone(sessionId).subscribe(
+          response => {
+              console.log('Session marked as done:', response);
+              // Optionally, update any UI or component state after marking the session as done
+          },
+          error => {
+              console.error('Error marking session as done:', error);
+          }
+      );
   }
-  //mark as done
- 
 }

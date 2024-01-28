@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import FormValidator from 'src/app/helpers/validateform';
-import { StrongPasswordRegx } from 'src/app/strongPassword';
 
 @Component({
   selector: 'app-signup',
@@ -26,7 +25,7 @@ ngOnInit(){
     lastName:['', Validators.required],
     email:['', Validators.required],
     username:['', Validators.required],
-    password:['', Validators.required,/*Validators.pattern(StrongPasswordRegx)*/]
+    password:['', Validators.required]
   })
 }
 onSubmit() {
