@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import FormValidator from 'src/app/helpers/validateform';
-import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgToastService } from 'ng-angular-popup';
+
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit{
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private toast: NgToastService,
+    ) {}
 
-  // initialisation et déclarations des variables du fa-eye et du m2p par défaut 
   type: string="password";
   isText: boolean=false;
   eyeIcon: string="fa-eye-slash";
@@ -39,11 +40,14 @@ onSubmit() {
     this.auth.signIn(this.loginForm.value).subscribe(
       {
         next:(res)=>{
-          alert(res.message);
+          //store the token i got in my response
+          this.auth.storeToken(res.token);
+          this.toast.success({detail:"SUCCESS", summary:res.message, duration: 5000});
+          this.router.navigate(['dashboard']);
         }, 
         error:(err)=> {
-          alert(err?.error.message);     
-        }
+          this.toast.error({detail:"ERROR", summary:"Something when wrong!", duration: 5000});
+          console.log(err);        }
       }
     )  
   } else {

@@ -1,4 +1,4 @@
-<div *ngFor="let session of currentWeek">
+<div >
   <h3>{{ session.getName()}}</h3>
   <app-workout *ngFor="let workout of session.workouts" [session]="session" [workout]="workout"></app-workout>
   <button (click)="markSessionAsDone(session.getId())">Mark Session as Done</button>

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { WorkoutComponent } from './components/workout/workout.component';
 import { SessionComponent } from './components/session/session.component';
 import { CurrentWeekComponent } from './components/current-week/current-week.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [

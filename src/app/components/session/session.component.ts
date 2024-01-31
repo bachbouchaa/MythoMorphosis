@@ -9,8 +9,7 @@ import { GymService } from 'src/app/services/gym.service';
   styleUrl: './session.component.css'
 })
 export class SessionComponent  {
-  @Input() currentWeek!: Session[];
-
+  @Input() session!: Session;
   constructor(private gymService: GymService) {}
 
   markSessionAsDone(sessionId: number) {

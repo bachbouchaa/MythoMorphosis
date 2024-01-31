@@ -10,7 +10,7 @@ import { GymService } from 'src/app/services/gym.service';
   styleUrls: ['./current-week.component.css']
 })
   export class CurrentWeekComponent implements OnInit {
-    currentWeek!: Session[];
+    currentWeek : Session[] = [];
     constructor(private gymService: GymService) {}
     ngOnInit() {
         this.gymService.getCurrentWeek().subscribe(
