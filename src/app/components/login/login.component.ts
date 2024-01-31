@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import FormValidator from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgToastService } from 'ng-angular-popup';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 
 @Component({
@@ -15,7 +16,8 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class LoginComponent implements OnInit{
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private toast: NgToastService,
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private toast: NgToastService, private userStore: UserStoreService
+
     ) {}
 
   type: string="password";
@@ -34,24 +36,30 @@ export class LoginComponent implements OnInit{
     this.isText = !this.isText;
     this.isText ? this.eyeIcon = "fa-eye" : this.eyeIcon = "fa-eye-slash";
     this.isText ? this.type = "text" : this.type = "password";
-}
-onSubmit() {
-  if (this.loginForm.valid) {
-    this.auth.signIn(this.loginForm.value).subscribe(
-      {
-        next:(res)=>{
-          //store the token i got in my response
-          this.auth.storeToken(res.token);
-          this.toast.success({detail:"SUCCESS", summary:res.message, duration: 5000});
-          this.router.navigate(['dashboard']);
-        }, 
-        error:(err)=> {
-          this.toast.error({detail:"ERROR", summary:"Something when wrong!", duration: 5000});
-          console.log(err);        }
-      }
-    )  
-  } else {
-    FormValidator.markFormGroupTouched(this.loginForm);
   }
-}
+  
+  onSubmit() {
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
+      this.auth.signIn(this.loginForm.value).subscribe({
+        next: (res) => {
+          console.log(res.message);
+          this.loginForm.reset();
+          this.auth.storeToken(res.accessToken);
+          this.auth.storeRefreshToken(res.refreshToken);
+          const tokenPayload = this.auth.decodedToken();
+          this.userStore.setFullNameForStore(tokenPayload.name);
+          this.userStore.setRoleForStore(tokenPayload.role);
+          this.toast.success({detail:"SUCCESS", summary:res.message, duration: 5000});
+          this.router.navigate(['dashboard'])
+        },
+        error: (err) => {
+          this.toast.error({detail:"ERROR", summary:"Something when wrong!", duration: 5000});
+          console.log(err);
+        },
+      });
+    } else {
+      FormValidator.markFormGroupTouched(this.loginForm);
+    }
+  }
 }

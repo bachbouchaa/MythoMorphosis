@@ -7,7 +7,6 @@ export const AuthGuard = () => {
     const auth = inject(AuthService);
     const router = inject(Router);
     const toast = inject(NgToastService);
-
     if(!auth.isAuthenticated()) {
         toast.error({detail:"ERROR", summary:"Please Login First!"});
         router.navigate([''])

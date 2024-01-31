@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -14,6 +14,7 @@ import { WorkoutComponent } from './components/workout/workout.component';
 import { SessionComponent } from './components/session/session.component';
 import { CurrentWeekComponent } from './components/current-week/current-week.component';
 import { AuthGuard } from './guards/auth.guard';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,11 @@ import { AuthGuard } from './guards/auth.guard';
     HttpClientModule,
     RouterOutlet, RouterLink, RouterLinkActive, AppRoutingModule, ReactiveFormsModule,HttpClientModule,CommonModule 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor, 
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
