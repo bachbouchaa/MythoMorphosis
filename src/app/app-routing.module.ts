@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'contact', component: LoginComponent },
   { path: 'navbar', component: NavbarComponent },
   { path: 'sidebar', component: SidebarComponent },
-  { path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]}
+  { path:'dashboard', component: DashboardComponent}
 
 ];
 

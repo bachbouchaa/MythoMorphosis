@@ -9,9 +9,9 @@
                     <div class="panel-body p-3">
                         <form [formGroup]="loginForm" >
                             <div class="form-group pt-3">
-                                <div class="input-field" [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"> 
+                                <div class="input-field" [class.error]="loginForm.controls['email'].dirty && loginForm.hasError('required','email')"> 
                                     <span class="fa fa-user p-2"></span> 
-                                    <input formControlName="username" type="text" placeholder="Username" required> 
+                                    <input formControlName="email" type="text" placeholder="name@mail.com" required> 
                                 </div>
                             </div>
                             <small *ngIf="loginForm.controls['username'].dirty && loginForm.controls['username'].touched && loginForm.hasError('required', 'username')" class="text-danger">*Username is required*</small>
@@ -19,7 +19,7 @@
                                 <div class="input-field" [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"> 
                                     <span class="fa fa-lock px-2"></span>
                                     <input formControlName="password" [type]="type" placeholder="Password"> 
-                                    <button type="button" (click)="hideShowPass()" class="bg-white text-muted"> 
+                                    <button type="button"  class="bg-white text-muted"> 
                                     <span class="fa {{eyeIcon}}"></span> </button>                                    
                             </div>
                             </div>
